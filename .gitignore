@@ -1,0 +1,14 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+bin/
+obj/
+*.rar
+*.suo
+*.nuspec
+*.nupkg
+*.pfx
