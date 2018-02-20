@@ -9,7 +9,7 @@ using TestApp.ViewModels;
 
 namespace TestApp
 {
-    public class Bootstrapper
+    public class Bootstrapper : BootstrapperBase
     {
         public Bootstrapper()
         {
@@ -17,23 +17,11 @@ namespace TestApp
             DisplayRootViewFor<MainViewModel>();
         }
 
-        private void Configure()
+        public override void Configure()
         {
             IoC.AddInContainer<SampleViewModel>();
             IoC.AddInContainer<MainViewModel>();
         }
 
-        public void DisplayRootViewFor<T>()
-        {
-            try
-            {
-                Application.Current.MainWindow = (Window)(IoC.Get<T>().GetType().GetProperty("View").GetValue(IoC.Get<T>(), null));
-                Application.Current.MainWindow.Show();
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex);
-            }
-        }
     }
 }
